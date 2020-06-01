@@ -4,44 +4,50 @@ const server = express();
 
 server.use(express.json());
 
-const project = []
+const projects = []
+
+function checkProjectExist(req, res, next){
+    if(req.params.id >= projects.length)
+        return res.status(400).json({Message: "Project ID does not exist"})
+    return next()
+}
 
 server.get('/projects', (req, res) =>{
-    return res.json(project)
+    return res.json(projects)
 })
 
 server.post('/projects', (req, res) => {
     const { id } = req.body
     const { title } = req.body
 
-    project.push({id: id, title: title, tasks: []})
+    projects.push({id: id, title: title, tasks: []})
 
-    return res.json({Message: "Create success", project})
+    return res.json({Message: "Create success", projects})
 
 })
 
-server.post('/projects/:id/tasks', (req, res) =>{
+server.post('/projects/:id/tasks', checkProjectExist, (req, res) =>{
     const { id } = req.params
     const { title } = req.body
 
-    project[id].tasks.push({title: title})
+    projects[id].tasks.push({title: title})
 
-    return res.json({Message: "Successfully created task", project})
+    return res.json({Message: "Successfully created task", projects})
 })
 
-server.put('/projects/:id', (req, res) =>{
+server.put('/projects/:id', checkProjectExist, (req, res) =>{
     const { id } = req.params
     const { title } = req.body
 
-    project[id].title = title
+    projects[id].title = title
 
-    return res.json({Message: "Update success", project})
+    return res.json({Message: "Update success", projects})
 })
 
-server.delete('/projects/:id', (req, res) =>{
+server.delete('/projects/:id', checkProjectExist, (req, res) =>{
     const { id } = req.params
 
-    project.splice(id, 1)
+    projects.splice(id, 1)
 
     return res.json({Message: "Delete success"})
 })
