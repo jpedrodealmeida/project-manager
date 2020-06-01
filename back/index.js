@@ -29,5 +29,12 @@ server.put('/projects/:id', (req, res) =>{
     return res.json({Message: "Update success", project})
 })
 
+server.delete('/projects/:id', (req, res) =>{
+    const { id } = req.params
+
+    project.splice(id, 1)
+
+    return res.json({Message: "Delete success"})
+})
 
 server.listen(3000)
