@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProjectsStructureComponent } from './projects-structure.component';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -9,7 +9,8 @@ import { ProjectsStructureComponent } from './projects-structure.component';
     ProjectsStructureComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule
   ],
   exports: [
     ProjectsStructureComponent
