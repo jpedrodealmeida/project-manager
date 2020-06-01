@@ -6,6 +6,15 @@ server.use(express.json());
 
 const projects = []
 
+var requestsAmount = 0
+
+server.use((req, res, next) =>{
+    requestsAmount++
+    console.log(requestsAmount)
+    
+    next()
+})
+
 function checkProjectExist(req, res, next){
     if(req.params.id >= projects.length)
         return res.status(400).json({Message: "Project ID does not exist"})
