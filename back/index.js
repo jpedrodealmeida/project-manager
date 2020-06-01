@@ -16,8 +16,17 @@ server.post('/projects', (req, res) => {
 
     project.push({id: id, title: title, tasks: []})
 
-    return res.json({Message: "Success created", project})
+    return res.json({Message: "Create success", project})
 
+})
+
+server.put('/projects/:id', (req, res) =>{
+    const { id } = req.params
+    const { title } = req.body
+
+    project[id].title = title
+
+    return res.json({Message: "Update success", project})
 })
 
 
