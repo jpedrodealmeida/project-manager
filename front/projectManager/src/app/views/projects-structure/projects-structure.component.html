@@ -4,9 +4,9 @@
         <mat-tab label="Valid Projects">
             <div class="add-project">
                 <div class="button-add-project">
-                    <i class="fas fa-plus-circle"></i>
+                    <i class="fas fa-plus-circle" (click)="showProjectForm()"></i>
                 </div>
-                <app-project-form></app-project-form>
+                <app-project-form *ngIf="showForm" (cancelButton)="hideProjectForm()"></app-project-form>
             </div>
             <app-project-list *ngFor="let project of projects" [project]='project'></app-project-list>
         </mat-tab>

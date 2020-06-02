@@ -13,6 +13,7 @@ interface Project {
 export class ProjectsStructureComponent implements OnInit {
 
   public projects
+  public showForm: boolean = false
 
   constructor() { }
 
@@ -22,6 +23,14 @@ export class ProjectsStructureComponent implements OnInit {
       {title: "Angular", id: 0, tasks: ['Create', 'Read', 'Update', 'Delete']},
       {title: "React", id: 1, tasks: ['Create', 'Read', 'Update', 'Delete']}
     ]
+  }
+
+  public showProjectForm(){
+    this.showForm = true;
+  }
+
+  public hideProjectForm(){
+    this.showForm = false;
   }
 
 }
