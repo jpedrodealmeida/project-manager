@@ -30,7 +30,7 @@ export class ProjectsStructureComponent implements OnInit {
   private getAllProjects(){
     this._projectService.getProjects().subscribe(projects =>{
       if(projects)
-        debugger
+        this.projects = projects
     },error =>{
 
     })
