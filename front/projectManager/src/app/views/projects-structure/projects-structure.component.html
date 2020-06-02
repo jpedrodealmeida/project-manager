@@ -5,7 +5,7 @@
             <div class="add-project">
                 <i class="fas fa-plus-circle"></i>
             </div>
-            <app-project-list></app-project-list>
+            <app-project-list *ngFor="let project of projects" [project]='project'></app-project-list>
         </mat-tab>
         <mat-tab label="Removed Projects">You do not have projects removed</mat-tab>
     </mat-tab-group>
