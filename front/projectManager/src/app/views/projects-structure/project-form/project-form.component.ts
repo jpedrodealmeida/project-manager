@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ProjectService } from 'src/app/services/project/project.service';
-import { ToastrService } from 'ngx-toastr';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ export class ProjectFormComponent implements OnInit {
   constructor(
      private _fb: FormBuilder,
      private _projectService: ProjectService,
-     private _toastrService: ToastrService
+   
      ) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class ProjectFormComponent implements OnInit {
   private saveProject(project: object){
     this._projectService.postProject(project).subscribe(success =>{
       this.closeForm.emit(success.projects)
-      this._toastrService.success('Project successfully created')
+      // this._toastrService.success('Project successfully created')
     }, error=>{
       console.log(error.message)
     })
