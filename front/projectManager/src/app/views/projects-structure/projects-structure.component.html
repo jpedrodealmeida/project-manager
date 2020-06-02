@@ -3,7 +3,10 @@
     <mat-tab-group mat-align-tabs="end">
         <mat-tab label="Valid Projects">
             <div class="add-project">
-                <i class="fas fa-plus-circle"></i>
+                <div class="button-add-project">
+                    <i class="fas fa-plus-circle"></i>
+                </div>
+                <app-project-form></app-project-form>
             </div>
             <app-project-list *ngFor="let project of projects" [project]='project'></app-project-list>
         </mat-tab>

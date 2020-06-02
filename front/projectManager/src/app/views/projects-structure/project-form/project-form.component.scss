@@ -1,0 +1,16 @@
+.form-structure{
+    width: 50%;
+    display: grid;
+    grid-auto-flow: column;
+}
+.submit-structure{
+    text-align: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 12px;
+}
+
+.button{
+    height: 40px;
+}

@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-title>New project</mat-card-title>
+    <div class="form-structure">
+        <p>
+            <mat-form-field appearance="legacy">
+            <mat-label>Project title</mat-label>
+            <input matInput placeholder="Placeholder">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="legacy">
+            <mat-label>Project ID</mat-label>
+            <input matInput type="number" disabled value="1">
+            <mat-hint>You can not choose this value</mat-hint>
+            </mat-form-field>
+        </p>
+        <section class="submit-structure">
+            <button mat-raised-button color="primary" class="button">Save</button>
+            <button mat-raised-button color="basic" class="button">Cancel</button>
+        </section>
+    </div>
+</mat-card>
