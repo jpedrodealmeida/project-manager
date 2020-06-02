@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/app/services/project/project.service';
 
 interface Project {
   title: string,
@@ -15,14 +16,24 @@ export class ProjectsStructureComponent implements OnInit {
   public projects
   public showForm: boolean = false
 
-  constructor() { }
+  constructor(private _projectService: ProjectService) { }
 
   ngOnInit() {
-    this.projects = 
-    [
-      {title: "Angular", id: 0, tasks: ['Create', 'Read', 'Update', 'Delete']},
-      {title: "React", id: 1, tasks: ['Create', 'Read', 'Update', 'Delete']}
-    ]
+    // this.projects = 
+    // [
+    //   {title: "Angular", id: 0, tasks: ['Create', 'Read', 'Update', 'Delete']},
+    //   {title: "React", id: 1, tasks: ['Create', 'Read', 'Update', 'Delete']}
+    // ]
+    this.getAllProjects()
+  }
+
+  private getAllProjects(){
+    this._projectService.getProjects().subscribe(projects =>{
+      if(projects)
+        debugger
+    },error =>{
+
+    })
   }
 
   public showProjectForm(){
