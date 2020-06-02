@@ -39,7 +39,7 @@ export class PublicService {
    * Method for POST new project 
    * @param project obj 'project'
    */ 
-  postNewProject<T>(project: object): Observable<any> {
+  postProject<T>(project: object): Observable<any> {
     return this.httpClient.post<T>(this.basePath + '/projects/', JSON.stringify(project), this.httpOptions)
     .pipe(
       retry(1),

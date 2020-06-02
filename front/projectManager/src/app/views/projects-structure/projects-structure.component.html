@@ -6,7 +6,7 @@
                 <div class="button-add-project">
                     <i class="fas fa-plus-circle" (click)="showProjectForm()"></i>
                 </div>
-                <app-project-form *ngIf="showForm" (cancelButton)="hideProjectForm()" [lastId]='projects.length'></app-project-form>
+                <app-project-form *ngIf="showForm" (closeForm)="hideProjectForm($event)" [lastId]='projects.length'></app-project-form>
             </div>
             <app-project-list *ngFor="let project of projects" [project]='project'></app-project-list>
         </mat-tab>

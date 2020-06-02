@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { ProjectService } from 'src/app/services/project/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -10,11 +12,15 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 export class ProjectFormComponent implements OnInit {
 
   @Input('lastId') lastId: number
-  @Output() cancelButton = new EventEmitter()
+  @Output() closeForm = new EventEmitter()
 
   public form: FormGroup
 
-  constructor(private _fb: FormBuilder) { }
+  constructor(
+     private _fb: FormBuilder,
+     private _projectService: ProjectService,
+     private _toastrService: ToastrService
+     ) { }
 
   ngOnInit() {
     this.createForm()
@@ -27,11 +33,14 @@ export class ProjectFormComponent implements OnInit {
   }
 
   public saveButton(){
-    this.form.controls['title'].value
+    let title = this.form.controls['title'].value
+    let id = this.form.controls['id'].value
+    let project = this.createProjectObjectBeforePost(title, id)
+    this.saveProject(project)
   }
 
   public buttonCancel(){
-    this.cancelButton.emit(true)
+    this.closeForm.emit()
   }
 
   private createForm() {
@@ -39,6 +48,24 @@ export class ProjectFormComponent implements OnInit {
       title: [null, Validators.compose([Validators.required])],
       id: [{value: null, disabled: true}, Validators.compose([Validators.required])]
     });
+  }
+
+  private saveProject(project: object){
+    this._projectService.postProject(project).subscribe(success =>{
+      this.closeForm.emit(success.projects)
+      this._toastrService.success('Project successfully created')
+    }, error=>{
+      console.log(error.message)
+    })
+
+  }
+
+  private createProjectObjectBeforePost(title: string, id: number): object{
+    let project = {
+      title: title,
+      id: id
+    }
+    return project
   }
 
 }

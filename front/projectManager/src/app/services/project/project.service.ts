@@ -9,8 +9,8 @@ export class ProjectService {
 
   constructor(private _publicService: PublicService) { }
 
-  public newProject(project: object):Observable<any>{
-    return this._publicService.postNewProject(project);
+  public postProject(project: object):Observable<any>{
+    return this._publicService.postProject(project);
   }
 
   public getProjects():Observable<any>{

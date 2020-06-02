@@ -40,7 +40,9 @@ export class ProjectsStructureComponent implements OnInit {
     this.showForm = true;
   }
 
-  public hideProjectForm(){
+  public hideProjectForm(projectsUpdated?){
+    if(projectsUpdated)
+      this.projects = projectsUpdated
     this.showForm = false;
   }
 
