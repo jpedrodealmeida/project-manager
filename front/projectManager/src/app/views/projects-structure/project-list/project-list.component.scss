@@ -1,4 +1,18 @@
 .project-structure{
     display: grid;
+    grid-auto-flow: column;
+}
+
+.informations{
+    display: grid;
     grid-auto-flow: row;
+}
+
+.actions{
+    text-align: right;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    .icon{
+        font-size: 22px;
+    }
 }
