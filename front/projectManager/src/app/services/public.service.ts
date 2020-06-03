@@ -71,6 +71,19 @@ export class PublicService {
     )
   }
 
+   /**
+   * Method for DELETE project 
+   * @param id string 'id' from the project for remove
+   */ 
+  deleteProject<T>(id: string): Observable<any> {
+    return this.httpClient.delete<T>(this.basePath + `/projects/${id}`, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.errorHandl)
+    )
+  } 
+
+
    // Error handling
    errorHandl(error) {
     let errorMessage = '';

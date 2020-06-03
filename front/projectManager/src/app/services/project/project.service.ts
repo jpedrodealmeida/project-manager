@@ -16,4 +16,8 @@ export class ProjectService {
   public getProjects():Observable<any>{
     return this._publicService.getProjects();
   }
+
+  public deleteProject(id: string):Observable<any>{
+    return this._publicService.deleteProject(id);
+  }
 }
